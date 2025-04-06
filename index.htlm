@@ -108,6 +108,76 @@
         }
       }).addTo(map);
     });.
+>
+  // Code actuel pour la carte et les départements
+  const map = L.map('map').setView([46.8, 2.5], 6);
+
+  // Fond blanc
+  L.tileLayer('', { minZoom: 5, maxZoom: 10 }).addTo(map);
+
+  // Chargement des contours des départements
+  fetch('departements.geojson')
+    .then(response => response.json())
+    .then(data => {
+      L.geoJSON(data, {
+        style: {
+          color: '#000',
+          weight: 1,
+          fillOpacity: 0
+        }
+      }).addTo(map);
+    });
+
+  // Nouveau code pour la gestion des communes et des cercles
+  let communes = [];
+  fetch('communes.json')
+    .then(response => response.json())
+    .then(data => {
+      communes = data.communes;
+    });
+
+  document.getElementById('communeInput').addEventListener('keyup', function(event) {
+    if (event.key === " ") {  // Si on appuie sur espace
+      const communeName = document.getElementById('communeInput').value.trim();
+      const commune = communes.find(c => c.nom.toLowerCase() === communeName.toLowerCase());
+
+      if (commune) {
+        // Ajouter un cercle à la carte
+        const radius = commune.population / 1000;  // Taille du cercle basé sur la population
+        L.circle([commune.latitude, commune.longitude], {
+          color: 'blue',
+          fillColor: '#30f',
+          fillOpacity: 0.5,
+          radius: radius
+        }).addTo(map);
+
+        // Mettre à jour la liste des communes trouvées
+        const list = document.getElementById('foundList');
+        const listItem = document.createElement('li');
+        listItem.textContent = commune.nom + " (Population: " + commune.population + ")";
+        list.appendChild(listItem);
+
+        // Réinitialiser la barre de recherche
+        document.getElementById('communeInput').value = "";
+      }
+    }
+  });
+
+  // Fonction pour réinitialiser la carte
+  function resetGame() {
+    map.setView([46.8, 2.5], 6);
+    map.eachLayer(layer => {
+      if (layer instanceof L.Circle) {
+        map.removeLayer(layer);
+      }
+    });
+    document.getElementById('foundList').innerHTML = "";  // Clear list
+  }
+
+  // Fonction pour abandonner
+  function abandonGame() {
+    alert("Game Abandoned! Your progress will not be saved.");
+  }
   </script>
 
 </body>
