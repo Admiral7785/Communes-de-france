@@ -84,10 +84,30 @@
 
   <!-- Zone pour ajouter le code JavaScript du jeu -->
   <script>
-    // ICI on ajoutera tout le code JavaScript
-    // - Chargement de la carte vierge
-    // - Chargement des données des départements et communes
-    // - Gestion du score, des cercles, des entrées, etc.
+   // Initialisation de la carte blanche
+  const map = L.map('map', {
+    zoomControl: true,
+    attributionControl: false
+  }).setView([46.8, 2.5], 6); // centre de la France
+
+  // Fond blanc (pas de tuiles OSM)
+  L.tileLayer('', {
+    minZoom: 5,
+    maxZoom: 10,
+  }).addTo(map);
+
+  // Chargement des contours de départements
+  fetch('departements.geojson')
+    .then(response => response.json())
+    .then(data => {
+      L.geoJSON(data, {
+        style: {
+          color: '#000',       // contour noir
+          weight: 1,
+          fillOpacity: 0       // pas de fond
+        }
+      }).addTo(map);
+    });.
   </script>
 
 </body>
