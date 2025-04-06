@@ -1,0 +1,37 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "code": "75", "nom": "Paris" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[2.2242,48.8156],[2.4699,48.8156],[2.4699,48.9022],[2.2242,48.9022],[2.2242,48.8156]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "code": "69", "nom": "Rhône" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[4.6,45.5],[4.6,45.9],[5.1,45.9],[5.1,45.5],[4.6,45.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "code": "13", "nom": "Bouches-du-Rhône" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[4.3,43.2],[4.3,43.9],[5.7,43.9],[5.7,43.2],[4.3,43.2]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "code": "31", "nom": "Haute-Garonne" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[0.8,42.6],[0.8,43.9],[1.8,43.9],[1.8,42.6],[0.8,42.6]]]
+      }
+    }
+  ]
+}
