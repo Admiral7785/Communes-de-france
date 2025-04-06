@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz des Communes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Chargement de Leaflet pour la carte -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      text-align: center;
+    }
+    #map {
+      height: 500px;
+      margin: 10px auto;
+      width: 95%;
+      border: 1px solid #ccc;
+    }
+    #controls {
+      margin: 15px 0;
+    }
+    input, select, button {
+      padding: 8px;
+      margin: 5px;
+      font-size: 1rem;
+    }
+    #score {
+      margin: 10px;
+      font-weight: bold;
+    }
+    #communesList {
+      max-height: 200px;
+      overflow-y: auto;
+      margin: 0 auto;
+      width: 90%;
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Quiz des Communes de France</h1>
+
+  <!-- Contrôles du jeu -->
+  <div id="controls">
+    <select id="departementSelect">
+      <option value="">-- Choisir un département --</option>
+      <option value="75">75 - Paris</option>
+      <option value="69">69 - Rhône</option>
+      <option value="13">13 - Bouches-du-Rhône</option>
+      <option value="31">31 - Haute-Garonne</option>
+    </select>
+
+    <!-- Barre pour taper une commune -->
+    <input type="text" id="communeInput" placeholder="Tapez une commune..." autofocus />
+
+    <!-- Boutons de jeu -->
+    <button onclick="resetGame()">Réinitialiser</button>
+    <button onclick="abandonGame()">Abandonner</button>
+
+    <!-- Affichage du score -->
+    <div id="score">Score : 0 / ?</div>
+  </div>
+
+  <!-- Carte -->
+  <div id="map"></div>
+
+  <!-- Liste des communes trouvées -->
+  <div id="communesList">
+    <h3>Communes trouvées :</h3>
+    <ul id="foundList"></ul>
+  </div>
+
+  <!-- Chargement de Leaflet -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Zone pour ajouter le code JavaScript du jeu -->
+  <script>
+    // ICI on ajoutera tout le code JavaScript
+    // - Chargement de la carte vierge
+    // - Chargement des données des départements et communes
+    // - Gestion du score, des cercles, des entrées, etc.
+  </script>
+
+</body>
+</html>
